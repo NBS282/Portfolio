@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+
+    <!-- Botón de inicio -->
+    <a href="#home" class="home-icon">
+      <i class="bi bi-house"></i>
+    </a>
+
+    <div id="home" class="snap-container">
+      <!-- Hero Section -->
+      <section class="hero-section container-fluid d-flex align-items-center">
+        <div class="container row justify-content-between align-items-center">
+          <!-- Texto -->
+          <div class="hero-text col-12 col-md-6">
+            <h1 class="display-4 text-warning">Hi! I'm Nicolas.</h1>
+            <p class="lead">
+              I enjoy creating solutions that make people's lives easier through
+              intuitive and reliable software.
+            </p>
+          </div>
+          <!-- Imagen -->
+          <div class="hero-image col-12 col-md-5 text-center">
+            <img
+              src="assets/images/profile.jpg"
+              alt="Profile photo"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="about-me container py-5">
+        <h2 class="text-primary text-center mb-4">About Me</h2>
+        <p
+          class="text-secondary text-center mx-auto mb-5"
+          style="max-width: 800px"
+        >
+          I’m a Systems Engineering student currently in my 4th semester. I have
+          a strong interest in solving complex problems, designing intuitive
+          interfaces, and building scalable, maintainable applications. Below
+          are some key areas where I excel.
+        </p>
+        <div class="row justify-content-center g-4">
+          <div class="col-12 col-md-4">
+            <div class="card p-3 shadow">
+              <div class="icon text-center fs-2 text-primary">🎨</div>
+              <h3 class="text-center text-primary">Design</h3>
+              <p class="text-center text-secondary">
+                I focus on creating seamless user experiences through thoughtful
+                and modern designs
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card p-3 shadow">
+              <div class="icon text-center fs-2 text-primary">⚙️</div>
+              <h3 class="text-center text-primary">Engineering</h3>
+              <p class="text-center text-secondary">
+                I specialize in building scalable, resilient applications using
+                technologies like JavaScript, CSS, HTML, Java, and C++.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Flecha hacia abajo -->
+    <a href="#about" class="arrow arrow-down animated-element">
+      <i class="bi bi-arrow-down"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
