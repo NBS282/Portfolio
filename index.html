@@ -9,47 +9,83 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- Canvas para el efecto de partículas -->
     <canvas id="c"></canvas>
 
     <!-- Botón de inicio -->
-    <a href="#home" class="home-icon">
-      <i class="bi bi-house"></i>
+    <a
+      href="#home"
+      class="home-icon animated-element"
+      style="width: 35px; height: 35px"
+    >
+      <i class="bi bi-house" style="font-size: 18px"></i>
     </a>
 
-    <div id="home" class="snap-container">
+    <div id="home" class="snap-container w-100">
       <!-- Hero Section -->
-      <section class="hero-section container-fluid d-flex align-items-center">
-        <div class="container row justify-content-between align-items-center">
-          <!-- Texto -->
-          <div class="hero-text col-12 col-md-6">
-            <h1 class="display-4 text-warning">Hi! I'm Nicolas.</h1>
-            <p class="lead">
-              I enjoy creating solutions that make people's lives easier through
-              intuitive and reliable software.
-            </p>
-          </div>
-          <!-- Imagen -->
-          <div class="hero-image col-12 col-md-5 text-center">
-            <img
-              src="assets/images/profile.jpg"
-              alt="Profile photo"
-              class="img-fluid"
-            />
+      <section
+        class="hero-section container-fluid d-flex align-items-center justify-content-center text-center"
+        style="color: #32cd32; min-height: 100vh"
+      >
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <!-- Texto -->
+            <div class="hero-text col-12 col-md-6">
+              <h1 class="display-4" style="color: #32cd32">Hi! I'm Nicolas.</h1>
+              <p class="lead" style="color: #90ee90">
+                I enjoy creating solutions that make people's lives easier
+                through intuitive and reliable software.
+              </p>
+            </div>
+            <!-- Imagen -->
+            <div class="hero-image col-12 col-md-5">
+              <img
+                src="assets/images/profile.jpg"
+                alt="Profile photo"
+                class="img-fluid"
+                style="border: 2px solid #32cd32; border-radius: 10px"
+              />
+            </div>
           </div>
         </div>
+
+        <a
+          href="#about"
+          class="arrow arrow-down"
+          id="arrow-home"
+          data-next-arrow="arrow-about"
+          style="display: flex"
+        >
+          <i class="bi bi-arrow-down"></i>
+        </a>
       </section>
 
       <!-- About Me Section -->
-      <section id="about" class="about-me container py-5">
-        <h2 class="text-primary text-center mb-4">About Me</h2>
+      <section
+        id="about"
+        class="about-me container d-flex flex-column align-items-center py-5"
+        style="color: #32cd32"
+      >
+        <h2 id="title-am" class="text-center mb-4" style="color: #32cd32">
+          About Me
+        </h2>
         <p
-          class="text-secondary text-center mx-auto mb-5"
-          style="max-width: 800px"
+          id="description-am"
+          class="text-center mx-auto mb-5"
+          style="max-width: 800px; color: #90ee90"
         >
           I’m a Systems Engineering student currently in my 4th semester. I have
           a strong interest in solving complex problems, designing intuitive
@@ -58,33 +94,483 @@
         </p>
         <div class="row justify-content-center g-4">
           <div class="col-12 col-md-4">
-            <div class="card p-3 shadow">
-              <div class="icon text-center fs-2 text-primary">🎨</div>
-              <h3 class="text-center text-primary">Design</h3>
-              <p class="text-center text-secondary">
+            <div
+              class="card p-4 shadow text-center d-flex flex-column justify-content-center"
+              style="
+                background-color: #1c1c1c;
+                border: 1px solid #32cd32;
+                height: 250px;
+              "
+            >
+              <div class="icon mb-3" style="color: #32cd32; font-size: 2rem">
+                🎨
+              </div>
+              <h3 class="text-center" style="color: #32cd32; font-size: 2rem">
+                Design
+              </h3>
+              <p
+                class="text-center"
+                style="color: #90ee90; font-size: 1.2rem; padding-top: 15px"
+              >
                 I focus on creating seamless user experiences through thoughtful
-                and modern designs
+                and modern designs.
               </p>
             </div>
           </div>
           <div class="col-12 col-md-4">
-            <div class="card p-3 shadow">
-              <div class="icon text-center fs-2 text-primary">⚙️</div>
-              <h3 class="text-center text-primary">Engineering</h3>
-              <p class="text-center text-secondary">
+            <div
+              class="card p-4 shadow text-center d-flex flex-column justify-content-center"
+              style="
+                background-color: #1c1c1c;
+                border: 1px solid #32cd32;
+                height: 250px;
+              "
+            >
+              <div class="icon mb-3" style="color: #32cd32; font-size: 2rem">
+                ⚙️
+              </div>
+              <h3 class="text-center" style="color: #32cd32; font-size: 2rem">
+                Engineering
+              </h3>
+              <p
+                class="text-center"
+                style="color: #90ee90; font-size: 1.2rem; padding-top: 15px"
+              >
                 I specialize in building scalable, resilient applications using
                 technologies like JavaScript, CSS, HTML, Java, and C++.
               </p>
             </div>
           </div>
         </div>
+
+        <a
+          href="#projects"
+          class="arrow arrow-down"
+          id="arrow-about"
+          data-next-arrow="arrow-projects"
+          style="display: none"
+        >
+          <i class="bi bi-arrow-down"></i>
+        </a>
+      </section>
+
+      <!-- Projects Section -->
+      <section
+        id="projects"
+        class="projects container d-flex flex-column align-items-center py-5"
+        style="color: #32cd32"
+      >
+        <h2 id="title-p" class="text-center mb-4" style="color: #32cd32">
+          Projects
+        </h2>
+        <p
+          id="description-p"
+          class="text-center mx-auto mb-5"
+          style="max-width: 800px; color: #90ee90"
+        >
+          Here are some of the projects I've worked on. Click on the images to
+          learn more about each one.
+        </p>
+        <div class="row justify-content-center g-4">
+          <!-- Project 1 -->
+          <div class="col-12 col-md-4">
+            <div
+              class="card shadow text-center"
+              style="
+                background-color: #1c1c1c;
+                border: 1px solid #32cd32;
+                overflow: hidden;
+              "
+            >
+              <!-- Vista previa del proyecto -->
+              <img
+                src="path-to-project-image1.jpg"
+                alt="Project Preview"
+                class="img-fluid"
+                style="width: 100%; height: 200px; object-fit: cover"
+              />
+              <div class="p-3">
+                <h3 style="color: #32cd32; font-size: 1.5rem">
+                  Project Title 1
+                </h3>
+                <p style="color: #90ee90; font-size: 1.1rem">
+                  Brief description of the project goes here. This highlights
+                  key features and purpose.
+                </p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                  <i
+                    class="fab fa-html5"
+                    style="font-size: 1.5rem; color: #e34c26"
+                    title="HTML"
+                  ></i>
+                  <i
+                    class="fab fa-css3-alt"
+                    style="font-size: 1.5rem; color: #1572b6"
+                    title="CSS"
+                  ></i>
+                  <i
+                    class="fab fa-js"
+                    style="font-size: 1.5rem; color: #f7df1e"
+                    title="JavaScript"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-12 col-md-4">
+            <div
+              class="card shadow text-center"
+              style="
+                background-color: #1c1c1c;
+                border: 1px solid #32cd32;
+                overflow: hidden;
+              "
+            >
+              <!-- Vista previa del proyecto -->
+              <img
+                src="path-to-project-image2.jpg"
+                alt="Project Preview"
+                class="img-fluid"
+                style="width: 100%; height: 200px; object-fit: cover"
+              />
+              <div class="p-3">
+                <h3 style="color: #32cd32; font-size: 1.5rem">
+                  Project Title 2
+                </h3>
+                <p style="color: #90ee90; font-size: 1.1rem">
+                  Brief description of the project goes here. This highlights
+                  key features and purpose.
+                </p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                  <i
+                    class="fab fa-python"
+                    style="font-size: 1.5rem; color: #3776ab"
+                    title="Python"
+                  ></i>
+                  <i
+                    class="fas fa-database"
+                    style="font-size: 1.5rem; color: #f29111"
+                    title="SQL"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="col-12 col-md-4">
+            <div
+              class="card shadow text-center"
+              style="
+                background-color: #1c1c1c;
+                border: 1px solid #32cd32;
+                overflow: hidden;
+              "
+            >
+              <!-- Vista previa del proyecto -->
+              <img
+                src="path-to-project-image3.jpg"
+                alt="Project Preview"
+                class="img-fluid"
+                style="width: 100%; height: 200px; object-fit: cover"
+              />
+              <div class="p-3">
+                <h3 style="color: #32cd32; font-size: 1.5rem">
+                  Project Title 3
+                </h3>
+                <p style="color: #90ee90; font-size: 1.1rem">
+                  Brief description of the project goes here. This highlights
+                  key features and purpose.
+                </p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                  <i
+                    class="fab fa-react"
+                    style="font-size: 1.5rem; color: #61dafb"
+                    title="React"
+                  ></i>
+                  <i
+                    class="fab fa-node-js"
+                    style="font-size: 1.5rem; color: #43853d"
+                    title="Node.js"
+                  ></i>
+                  <i
+                    class="fas fa-database"
+                    style="font-size: 1.5rem; color: #4db33d"
+                    title="MongoDB"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="#skills"
+          class="arrow arrow-down"
+          id="arrow-projects"
+          data-next-arrow="arrow-skills"
+          style="display: none"
+        >
+          <i class="bi bi-arrow-down"></i>
+        </a>
+      </section>
+
+      <!-- Skills Section -->
+      <section
+        id="skills"
+        class="skills container d-flex flex-column align-items-center py-5"
+        style="color: #32cd32; margin-top: -50px"
+      >
+        <h2 id="title-skills" class="text-center mb-4" style="color: #32cd32">
+          Skills
+        </h2>
+        <p
+          id="description-skills"
+          class="text-center mx-auto mb-5"
+          style="max-width: 800px; color: #90ee90"
+        >
+          Below are the technical and soft skills I have developed throughout my
+          journey.
+        </p>
+
+        <!-- Skills Rows -->
+        <div class="row justify-content-center g-4">
+          <!-- Programming Languages -->
+          <div class="col-12 col-md-6">
+            <div
+              class="card p-4 shadow text-center skill-card"
+              style="background-color: #1c1c1c; border: 1px solid #32cd32"
+            >
+              <h3
+                style="color: #32cd32; font-size: 1.5rem; margin-bottom: 25px"
+              >
+                Programming Languages
+              </h3>
+              <div
+                class="d-flex flex-wrap justify-content-center gap-4 mt-3"
+                style="max-width: 400px; margin-top: 10px"
+              >
+                <div>
+                  <i
+                    class="fab fa-html5"
+                    style="font-size: 2rem; color: #e34c26"
+                    title="HTML"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">HTML</p>
+                </div>
+                <div>
+                  <i
+                    class="fab fa-css3-alt"
+                    style="font-size: 2rem; color: #1572b6"
+                    title="CSS"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">CSS</p>
+                </div>
+                <div>
+                  <i
+                    class="fab fa-js"
+                    style="font-size: 2rem; color: #f7df1e"
+                    title="JavaScript"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">JavaScript</p>
+                </div>
+                <div>
+                  <i
+                    class="fab fa-python"
+                    style="font-size: 2rem; color: #3776ab"
+                    title="Python"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">Python</p>
+                </div>
+                <div>
+                  <i
+                    class="fab fa-react"
+                    style="font-size: 2rem; color: #61dafb"
+                    title="React"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">React</p>
+                </div>
+                <div>
+                  <i
+                    class="fab fa-java"
+                    style="font-size: 2rem; color: #f89820"
+                    title="Java"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">Java</p>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-code"
+                    style="font-size: 2rem; color: #9a4993"
+                    title="C#"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">C#</p>
+                </div>
+                <div>
+                  <i
+                    class="fas fa-code"
+                    style="font-size: 2rem; color: #a8b9cc"
+                    title="C"
+                  ></i>
+                  <p style="color: #90ee90; font-size: 0.9rem">C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="col-12 col-md-6">
+            <div
+              class="card p-4 shadow text-center skill-card"
+              style="background-color: #1c1c1c; border: 1px solid #32cd32"
+            >
+              <h3
+                style="color: #32cd32; font-size: 1.5rem; margin-bottom: 25px"
+              >
+                Soft Skills
+              </h3>
+              <ul
+                class="list-unstyled mt-3 soft-skills-list"
+                style="color: #90ee90; font-size: 1.2rem"
+              >
+                <li>🤝 Teamwork</li>
+                <li>📈 Problem Solving</li>
+                <li>🗣️ Communication</li>
+                <li>⏰ Time Management</li>
+                <li>📚 Adaptability</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="#contact"
+          class="arrow arrow-down"
+          id="arrow-skills"
+          data-next-arrow="arrow-contact"
+          style="display: none"
+        >
+          <i class="bi bi-arrow-down"></i>
+        </a>
+      </section>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="contact container d-flex flex-column align-items-center py-5"
+        style="color: #32cd32"
+      >
+        <h2 class="text-center mb-4" style="color: #32cd32">Contact Me</h2>
+        <p
+          class="text-center mx-auto mb-5"
+          style="max-width: 800px; color: #90ee90"
+        >
+          Feel free to reach out to me through any of the following platforms!
+        </p>
+
+        <div class="row justify-content-center g-4 w-100">
+          <!-- Email -->
+          <div class="col-12 col-md-4 col-lg-2">
+            <div
+              class="card p-4 shadow text-center contact-card"
+              style="background-color: #1c1c1c; border: 1px solid #32cd32"
+            >
+              <i
+                class="fas fa-envelope"
+                style="font-size: 2.5rem; color: #d44638"
+                title="Email"
+              ></i>
+              <h3 style="color: #32cd32; font-size: 1.5rem; margin-top: 10px">
+                Email
+              </h3>
+              <p
+                id="email-text"
+                style="color: #90ee90; font-size: 1rem; user-select: none"
+              >
+                nicobidenti@gmail.com
+              </p>
+              <button
+                class="btn btn-outline-success copy-btn"
+                onclick="copyEmail()"
+                style="color: #32cd32; border: 1px solid #32cd32"
+              >
+                Copy Email
+              </button>
+            </div>
+          </div>
+
+          <!-- GitHub -->
+          <div class="col-12 col-md-4 col-lg-2">
+            <div
+              class="card p-4 shadow text-center contact-card"
+              style="background-color: #1c1c1c; border: 1px solid #32cd32"
+            >
+              <a
+                href="https://github.com/NBS282"
+                target="_blank"
+                style="color: #90ee90; text-decoration: none"
+              >
+                <i
+                  class="fab fa-github"
+                  style="font-size: 2.5rem; color: #4078c0"
+                  title="GitHub"
+                ></i>
+              </a>
+              <h3 style="color: #32cd32; font-size: 1.5rem; margin-top: 10px">
+                GitHub
+              </h3>
+              <p style="color: #90ee90; font-size: 1rem">
+                <a
+                  href="https://github.com/NBS282"
+                  target="_blank"
+                  style="color: #90ee90; text-decoration: none"
+                  >NBS282</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="col-12 col-md-4 col-lg-2">
+            <div
+              class="card p-4 shadow text-center contact-card"
+              style="background-color: #1c1c1c; border: 1px solid #32cd32"
+            >
+              <a
+                href="https://www.linkedin.com/in/nicolas-bidenti-881287264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+                style="color: #90ee90; text-decoration: none"
+              >
+                <i
+                  class="fab fa-linkedin"
+                  style="font-size: 2.5rem; color: #0077b5"
+                  title="LinkedIn"
+                ></i>
+              </a>
+              <h3 style="color: #32cd32; font-size: 1.5rem; margin-top: 10px">
+                LinkedIn
+              </h3>
+              <p style="color: #90ee90; font-size: 1rem">
+                <a
+                  href="https://www.linkedin.com/in/nicolas-bidenti-881287264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  target="_blank"
+                  style="color: #90ee90; text-decoration: none"
+                  >Nicolas Bidenti</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="#home"
+          class="arrow arrow-down"
+          id="arrow-contact"
+          style="display: none"
+        >
+          <i class="bi bi-arrow-up"></i>
+        </a>
       </section>
     </div>
-
-    <!-- Flecha hacia abajo -->
-    <a href="#about" class="arrow arrow-down animated-element">
-      <i class="bi bi-arrow-down"></i>
-    </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script src="js/main.js"></script>
