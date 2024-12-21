@@ -153,7 +153,7 @@ const particleVertex = `
 
 const particleFragment = `
   void main() {
-    gl_FragColor = vec4(0.5, 0.7, 1.0, 0.7); // Color azul claro con transparencia
+    gl_FragColor = vec4(0.7, 0.7, 1.2, 100); // Color azul claro con transparencia
   }
 `;
 
@@ -216,7 +216,7 @@ class Canvas {
       velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.1;
       velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.1;
 
-      scales[i] = Math.random() * 1.5 + 0.5;
+      scales[i] = Math.random() * 0.5 + 3;
     }
 
     this.geometry = new THREE.BufferGeometry();

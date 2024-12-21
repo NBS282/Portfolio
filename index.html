@@ -26,11 +26,7 @@
     <canvas id="c"></canvas>
 
     <!-- Botón de inicio -->
-    <a
-      href="#home"
-      class="home-icon animated-element"
-      style="width: 35px; height: 35px"
-    >
+    <a href="#home" class="home-icon" style="width: 40px; height: 40px">
       <i class="bi bi-house" style="font-size: 18px"></i>
     </a>
 
@@ -44,7 +40,7 @@
           <div class="row justify-content-center align-items-center">
             <!-- Texto -->
             <div class="hero-text col-12 col-md-6">
-              <h1 class="display-4" style="color: #32cd32">Hi! I'm Nicolas.</h1>
+              <h1 class="display-4" style="color: #32cd32">Hi! I'm Nicolás.</h1>
               <p class="lead" style="color: #90ee90">
                 I enjoy creating solutions that make people's lives easier
                 through intuitive and reliable software.
@@ -474,13 +470,20 @@
               class="card p-4 shadow text-center contact-card"
               style="background-color: #1c1c1c; border: 1px solid #32cd32"
             >
-              <i
-                class="fas fa-envelope"
-                style="font-size: 2.5rem; color: #d44638"
-                title="Email"
-              ></i>
+              <a
+                href="https://mail.google.com/"
+                onclick="copyEmail()"
+                target="_blank"
+                style="color: #90ee90; text-decoration: none"
+              >
+                <i
+                  class="fas fa-envelope"
+                  style="font-size: 2.5rem; color: #d44638"
+                  title="Email"
+                ></i>
+              </a>
               <h3 style="color: #32cd32; font-size: 1.5rem; margin-top: 10px">
-                Email
+                Gmail
               </h3>
               <p
                 id="email-text"
@@ -561,11 +564,24 @@
           </div>
         </div>
 
+        <!-- Botón para descargar el CV -->
+        <div class="mt-5 mb-4">
+          <a
+            href="path-to-your-cv.pdf"
+            download="Nicolas_Bidenti_CV.pdf"
+            class="btn btn-success"
+            style="color: #1c1c1c; border: 1px solid #32cd32"
+          >
+            <i class="bi bi-download"></i> Download My CV
+          </a>
+        </div>
+
+        <!-- Flecha -->
         <a
           href="#home"
           class="arrow arrow-down"
           id="arrow-contact"
-          style="display: none"
+          style="display: none; margin-top: 20px"
         >
           <i class="bi bi-arrow-up"></i>
         </a>
