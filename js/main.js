@@ -1,26 +1,27 @@
-
+/*
 // Desactivar scroll con la rueda del mouse
 window.addEventListener("wheel", (e) => {
-	e.preventDefault();
+  e.preventDefault();
 }, { passive: false });
 
 // Desactivar scroll con las teclas (opcional)
 window.addEventListener("keydown", (e) => {
-	const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
-	if (keys.includes(e.key)) {
-		e.preventDefault();
-	}
-});
+  const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+  if (keys.includes(e.key)) {
+    e.preventDefault();
+  }
+}); 
+*/
 
 // Scroll suave para enlaces de anclaje
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-	anchor.addEventListener("click", function (e) {
-		e.preventDefault();
-		const targetId = this.getAttribute("href");
-		document.querySelector(targetId).scrollIntoView({
-			behavior: "smooth",
-		});
-	});
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    document.querySelector(targetId).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 });
 
 // Configuración de las flechas para cada sección
@@ -28,57 +29,57 @@ const arrows = document.querySelectorAll(".arrow-down");
 
 // Función para mostrar/ocultar flechas según la sección actual
 arrows.forEach((arrow) => {
-	arrow.addEventListener("click", function () {
-		// Ocultar la flecha actual
-		arrow.style.display = "none";
+  arrow.addEventListener("click", function () {
+    // Ocultar la flecha actual
+    arrow.style.display = "none";
 
-		// Mostrar la siguiente flecha
-		const nextArrowId = this.getAttribute("data-next-arrow");
-		if (nextArrowId) {
-			const nextArrow = document.getElementById(nextArrowId);
-			if (nextArrow) {
-				nextArrow.style.display = "flex";
-			}
-		}
+    // Mostrar la siguiente flecha
+    const nextArrowId = this.getAttribute("data-next-arrow");
+    if (nextArrowId) {
+      const nextArrow = document.getElementById(nextArrowId);
+      if (nextArrow) {
+        nextArrow.style.display = "flex";
+      }
+    }
 
-		// Reiniciar flechas al llegar al final
-		if (arrow.id === "arrow-contact") {
-			// Desplazarse suavemente a la sección Hero
-			const heroSection = document.querySelector(".hero-section");
-			if (heroSection) {
-				heroSection.scrollIntoView({
-					behavior: "smooth", // Scroll suave
-				});
-			}
-			resetArrows();
-		}
-	});
+    // Reiniciar flechas al llegar al final
+    if (arrow.id === "arrow-contact") {
+      // Desplazarse suavemente a la sección Hero
+      const heroSection = document.querySelector(".hero-section");
+      if (heroSection) {
+        heroSection.scrollIntoView({
+          behavior: "smooth", // Scroll suave
+        });
+      }
+      resetArrows();
+    }
+  });
 });
 
 // Función para reiniciar flechas al estado inicial
 function resetArrows() {
-	// Ocultar todas las flechas
-	arrows.forEach((arrow) => {
-		arrow.style.display = "none";
-	});
+  // Ocultar todas las flechas
+  arrows.forEach((arrow) => {
+    arrow.style.display = "none";
+  });
 
-	// Mostrar la flecha inicial
-	const initialArrow = document.getElementById("arrow-home");
-	if (initialArrow) {
-		initialArrow.style.display = "flex";
-	}
+  // Mostrar la flecha inicial
+  const initialArrow = document.getElementById("arrow-home");
+  if (initialArrow) {
+    initialArrow.style.display = "flex";
+  }
 }
 
 // Animar elementos al hacer clic
 const animatedElements = document.querySelectorAll(".animated-element");
 
 animatedElements.forEach((element) => {
-	element.addEventListener("click", () => {
-		element.style.transform = "scale(1.5) rotate(0deg)";
-		setTimeout(() => {
-			element.style.transform = "scale(1)";
-		}, 200); // Duración del efecto
-	});
+  element.addEventListener("click", () => {
+    element.style.transform = "scale(1.5) rotate(0deg)";
+    setTimeout(() => {
+      element.style.transform = "scale(1)";
+    }, 200); // Duración del efecto
+  });
 });
 
 // Detectar el botón de inicio
@@ -86,57 +87,57 @@ const homeButton = document.querySelector(".home-icon");
 
 // Función para desplazarse al Hero Section
 homeButton.addEventListener("click", (e) => {
-	e.preventDefault(); // Evitar comportamiento predeterminado del enlace
+  e.preventDefault(); // Evitar comportamiento predeterminado del enlace
 
-	// Desplazarse suavemente a la sección Hero
-	const heroSection = document.querySelector(".hero-section");
-	if (heroSection) {
-		heroSection.scrollIntoView({
-			behavior: "smooth", // Scroll suave
-		});
-	}
+  // Desplazarse suavemente a la sección Hero
+  const heroSection = document.querySelector(".hero-section");
+  if (heroSection) {
+    heroSection.scrollIntoView({
+      behavior: "smooth", // Scroll suave
+    });
+  }
 });
 
 document.addEventListener("keydown", (event) => {
-	// Detectar la tecla presionada (ArrowUp o ArrowDown)
-	if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-		event.preventDefault();
+  // Detectar la tecla presionada (ArrowUp o ArrowDown)
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault();
 
-		// Obtener la sección actualmente visible en la ventana
-		const currentSection = document
-			.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
-			.closest("section");
+    // Obtener la sección actualmente visible en la ventana
+    const currentSection = document
+      .elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
+      .closest("section");
 
-		let targetSection;
+    let targetSection;
 
-		if (event.key === "ArrowDown") {
-			// Mover hacia abajo
-			targetSection = currentSection.nextElementSibling;
-		} else if (event.key === "ArrowUp") {
-			// Mover hacia arriba
-			targetSection = currentSection.previousElementSibling;
-		}
+    if (event.key === "ArrowDown") {
+      // Mover hacia abajo
+      targetSection = currentSection.nextElementSibling;
+    } else if (event.key === "ArrowUp") {
+      // Mover hacia arriba
+      targetSection = currentSection.previousElementSibling;
+    }
 
-		// Si existe la sección objetivo, hacer scroll hacia ella
-		if (targetSection) {
-			targetSection.scrollIntoView({
-				behavior: "smooth",
-				block: "start",
-			});
-		}
-	}
+    // Si existe la sección objetivo, hacer scroll hacia ella
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
 });
 
 function copyEmail() {
-	const emailText = document.getElementById("email-text").innerText;
-	navigator.clipboard
-		.writeText(emailText)
-		.then(() => {
-			//alert("Email copied to clipboard!");
-		})
-		.catch((err) => {
-			//console.error("Failed to copy text: ", err);
-		});
+  const emailText = document.getElementById("email-text").innerText;
+  navigator.clipboard
+    .writeText(emailText)
+    .then(() => {
+      //alert("Email copied to clipboard!");
+    })
+    .catch((err) => {
+      //console.error("Failed to copy text: ", err);
+    });
 }
 
 // Fondo de partículas con un cohete y fuego
@@ -170,13 +171,12 @@ class Canvas {
     this.initScene();
     this.initRenderer();
     this.initParticles();
-    this.initRocket();
-
+    this.initShips();
     this.animate();
 
     window.addEventListener('resize', () => this.onResize());
   }
-
+  
   initCamera() {
     this.camera = new THREE.PerspectiveCamera(
       75,
@@ -240,25 +240,120 @@ class Canvas {
     this.scene.add(this.particles);
   }
 
-  initRocket() {
-    const rocketGeometry = new THREE.ConeGeometry(0.5, 2, 16);
-    const rocketMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-    this.rocket = new THREE.Mesh(rocketGeometry, rocketMaterial);
-    this.scene.add(this.rocket);
-	
+  initShips() {
+    this.ships = []; // Arreglo para almacenar naves
 
+    const createShip = (geometry, material, position, speed, type) => {
+      const ship = new THREE.Mesh(geometry, material);
+      ship.position.set(position.x, position.y, position.z);
+      this.ships.push({ mesh: ship, speed, type });
+      this.scene.add(ship);
+    };
 
-    const flameGeometry = new THREE.ConeGeometry(0.2, 1, 16);
-    const flameMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
-    this.flame = new THREE.Mesh(flameGeometry, flameMaterial);
-    this.scene.add(this.flame);
+    // Crear un ovni más realista
+    const ufoBaseGeometry = new THREE.CylinderGeometry(2, 4, 0.5, 32);
+    const ufoBaseMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const ufoBase = new THREE.Mesh(ufoBaseGeometry, ufoBaseMaterial);
 
-    this.rocket.position.set(0, -50, 0);
-    this.flame.position.set(0, -51, 0);
+    const ufoDomeGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+    const ufoDomeMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaaa, transparent: true, opacity: 0.8 });
+    const ufoDome = new THREE.Mesh(ufoDomeGeometry, ufoDomeMaterial);
+    ufoDome.position.y = 0.5;
 
-    this.rocketSpeed = 0.2;
-    this.rocketTimer = 0;
-    this.rocketInterval = 30 * 60; 
+    const ufo = new THREE.Group();
+    ufo.add(ufoBase);
+    ufo.add(ufoDome);
+
+    this.ships.push({ mesh: ufo, speed: 0.1, type: 'ufo' });
+    this.scene.add(ufo);
+
+    // Crear una nave nodriza
+    const mothershipGeometry = new THREE.CylinderGeometry(4, 6, 2, 32);
+    const mothershipMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+    createShip(
+      mothershipGeometry,
+      mothershipMaterial,
+      { x: -30, y: -50, z: 0 },
+      0.05,
+      'mothership'
+    );
+
+    // Crear un cohete
+    const rocketBodyGeometry = new THREE.CylinderGeometry(0.3, 0.3, 2, 32);
+    const rocketBodyMaterial = new THREE.MeshBasicMaterial({ color: 0x808080 });
+    const rocketBody = new THREE.Mesh(rocketBodyGeometry, rocketBodyMaterial);
+
+    const rocketNoseGeometry = new THREE.ConeGeometry(0.3, 0.6, 32);
+    const rocketNoseMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    const rocketNose = new THREE.Mesh(rocketNoseGeometry, rocketNoseMaterial);
+    rocketNose.position.y = 1.3;
+
+    const rocketFinGeometry = new THREE.BoxGeometry(0.2, 0.5, 0.1);
+    const rocketFinMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    const rocketFins = [];
+    for (let i = 0; i < 4; i++) {
+      const fin = new THREE.Mesh(rocketFinGeometry, rocketFinMaterial);
+      fin.position.set(
+        Math.cos((i * Math.PI) / 2) * 0.35,
+        -1,
+        Math.sin((i * Math.PI) / 2) * 0.35
+      );
+      rocketFins.push(fin);
+    }
+
+    const rocket = new THREE.Group();
+    rocket.add(rocketBody, rocketNose, ...rocketFins);
+
+    this.ships.push({ mesh: rocket, speed: 0.2, type: 'rocket' });
+    this.scene.add(rocket);
+  }
+
+  animateShips() {
+    this.ships.forEach((ship) => {
+      if (ship.mesh.position.y <= 50) {
+        ship.mesh.position.y += ship.speed;
+
+        // Comportamiento específico para ovni
+        if (ship.type === 'ufo') {
+          ship.mesh.rotation.z += 0.02; // Rotación
+        }
+
+        // Comportamiento específico para nave nodriza
+        if (ship.type === 'mothership') {
+          ship.mesh.position.x += Math.sin(ship.mesh.position.y * 0.05) * 0.5; // Movimiento ondulatorio
+        }
+
+        // Generar partículas de humo para el cohete
+        if (ship.type === 'rocket') {
+          const smokeParticle = new THREE.Mesh(
+            new THREE.SphereGeometry(0.2, 8, 8),
+            new THREE.MeshBasicMaterial({ color: 0x555555, transparent: true, opacity: 0.5 })
+          );
+          smokeParticle.position.set(
+            ship.mesh.position.x,
+            ship.mesh.position.y - 2.5,
+            ship.mesh.position.z
+          );
+          this.scene.add(smokeParticle);
+
+          // Animar humo
+          const fadeSmoke = () => {
+            smokeParticle.material.opacity -= 0.02;
+            smokeParticle.position.y -= 0.05;
+            if (smokeParticle.material.opacity <= 0) {
+              this.scene.remove(smokeParticle);
+            } else {
+              requestAnimationFrame(fadeSmoke);
+            }
+          };
+          fadeSmoke();
+        }
+      } else {
+        // Reiniciar la posición cuando salen del escenario
+        ship.mesh.position.y = -50;
+        ship.mesh.position.x = (Math.random() - 0.5) * 100;
+      }
+    });
   }
 
   animateParticles() {
@@ -278,25 +373,9 @@ class Canvas {
     this.geometry.attributes.position.needsUpdate = true;
   }
 
-  animateRocket() {
-    if (this.rocketTimer === this.rocketInterval) {
-      this.rocket.position.y = -50;
-      this.rocket.position.x = (Math.random() - 0.5) * 100;
-      this.flame.position.x = this.rocket.position.x;
-      this.rocketTimer = 0;
-    }
-
-    if (this.rocket.position.y <= 50) {
-      this.rocket.position.y += this.rocketSpeed;
-      this.flame.position.y = this.rocket.position.y - 2;
-    }
-
-    this.rocketTimer++;
-  }
-
   animate() {
     this.animateParticles();
-    this.animateRocket();
+    this.animateShips(); // Animar todas las naves
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(() => this.animate());
   }
