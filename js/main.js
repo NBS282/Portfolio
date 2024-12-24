@@ -116,7 +116,6 @@ function copyEmail() {
     });
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const scrollAnimation = document.getElementById("scroll-animation");
 
