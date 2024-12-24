@@ -11,7 +11,8 @@ window.addEventListener("keydown", (e) => {
     e.preventDefault();
   }
 }); 
-*/// Detectar las secciones y flechas
+*/
+// Detectar las secciones y flechas
 const sections = document.querySelectorAll("section");
 const snapContainer = document.querySelector(".snap-container");
 
@@ -114,6 +115,26 @@ function copyEmail() {
       console.error("Failed to copy text: ", err);
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollAnimation = document.getElementById("scroll-animation");
+
+  let isScrolling = false;
+
+  // Detectar el inicio y el fin del scroll
+  window.addEventListener("scroll", () => {
+    if (!isScrolling) {
+      scrollAnimation.style.display = "flex"; // Mostrar animación
+      isScrolling = true;
+
+      setTimeout(() => {
+        scrollAnimation.style.display = "none"; // Ocultar animación
+        isScrolling = false;
+      }, 1000); // Duración de la animación
+    }
+  });
+});
 
 
 // Fondo de partículas con un cohete y fuego

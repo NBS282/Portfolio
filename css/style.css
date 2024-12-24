@@ -2,10 +2,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: #000000;
   color: #90ee90;
   overflow-x: hidden;
+  font-family: "Cabin", serif;
+}
+
+h1,
+h2 {
+  font-family: "Press Start 2P", cursive;
+  color: #32cd32;
+  font-size: 3.5rem; /* Tamaño por defecto en escritorio */
+  line-height: 1.2;
 }
 
 /* Canvas */
@@ -27,7 +35,7 @@ canvas {
 }
 
 .snap-container::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 .snap-container::-webkit-scrollbar-thumb {
@@ -56,11 +64,6 @@ section {
 .hero-section {
   text-align: center;
   padding: 20px;
-}
-
-.hero-text h1 {
-  font-size: 3.5rem;
-  color: #00ff00;
 }
 
 .hero-text p {
@@ -108,22 +111,12 @@ section {
   font-size: 1.2rem;
 }
 
-#title-am {
-  color: #32cd32;
-  font-size: 3.5rem;
-}
-
 /* Projects Section */
-
-#title-p {
-  color: #32cd32;
-  font-size: 3.5rem;
-}
 
 #description-p {
   color: #90ee90;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 #projects .card {
@@ -158,11 +151,6 @@ section {
 }
 
 /* Skills Section */
-/* General Styles */
-#title-skills {
-  color: #32cd32;
-  font-size: 3.5rem;
-}
 
 #description-skills {
   color: #90ee90;
@@ -170,8 +158,6 @@ section {
   font-size: 1.3rem;
 }
 
-/* Skills Section */
-/* Skills Section */
 #skills .row {
   align-items: stretch; /* Asegura que las columnas tengan la misma altura */
 }
@@ -263,18 +249,13 @@ section {
 
 /* Contact Section */
 
-#title-contact {
-  color: #32cd32;
-  font-size: 3.5rem;
-}
-
 #description-contact {
   color: #90ee90;
   font-size: 1.3rem;
   text-align: center;
 }
 .contact-card {
-  min-height: 250px;
+  min-height: 240px;
   background-color: #1c1c1c;
   border: 1px solid #32cd32;
   display: flex;
@@ -382,9 +363,15 @@ button:hover {
 /* Media Queries */
 @media (max-width: 768px) {
   h1,
-  h2,
+  h2 {
+    font-size: 2.4rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
   h3 {
     font-size: 1.5rem;
+    line-height: 1.4;
   }
 
   p {
