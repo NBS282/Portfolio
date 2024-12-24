@@ -11,74 +11,71 @@ window.addEventListener("keydown", (e) => {
     e.preventDefault();
   }
 }); 
-*/
+*/// Detectar las secciones y flechas
+const sections = document.querySelectorAll("section");
+const snapContainer = document.querySelector(".snap-container");
 
-// Scroll suave para enlaces de anclaje
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute("href");
-    document.querySelector(targetId).scrollIntoView({
-      behavior: "smooth",
+// Función para actualizar las flechas según la sección actual
+function updateArrows() {
+  const windowHeight = window.innerHeight;
+
+  let activeSection = null;
+
+  // Detectar la sección visible en el centro de la ventana
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+      activeSection = section;
+    }
+  });
+
+  if (activeSection) {
+    // Ocultar todas las flechas
+    document.querySelectorAll(".arrow").forEach((arrow) => {
+      arrow.style.display = "none";
     });
-  });
-});
 
-// Configuración de las flechas para cada sección
-const arrows = document.querySelectorAll(".arrow-down");
-
-// Función para mostrar/ocultar flechas según la sección actual
-arrows.forEach((arrow) => {
-  arrow.addEventListener("click", function () {
-    // Ocultar la flecha actual
-    arrow.style.display = "none";
-
-    // Mostrar la siguiente flecha
-    const nextArrowId = this.getAttribute("data-next-arrow");
-    if (nextArrowId) {
-      const nextArrow = document.getElementById(nextArrowId);
-      if (nextArrow) {
-        nextArrow.style.display = "flex";
-      }
+    // Mostrar la flecha correspondiente a la sección activa
+    const arrow = activeSection.querySelector(".arrow-down");
+    if (arrow) {
+      arrow.style.display = "flex";
     }
 
-    // Reiniciar flechas al llegar al final
-    if (arrow.id === "arrow-contact") {
-      // Desplazarse suavemente a la sección Hero
-      const heroSection = document.querySelector(".hero-section");
-      if (heroSection) {
-        heroSection.scrollIntoView({
-          behavior: "smooth", // Scroll suave
-        });
+    // Configurar la flecha de la última sección para redirigir al inicio
+    if (activeSection.id === "contact") {
+      const lastArrow = document.querySelector("#arrow-contact");
+      if (lastArrow) {
+        lastArrow.href = ".hero-section"; // Redirige al inicio
+        lastArrow.style.display = "flex";
       }
-      resetArrows();
     }
-  });
-});
-
-// Función para reiniciar flechas al estado inicial
-function resetArrows() {
-  // Ocultar todas las flechas
-  arrows.forEach((arrow) => {
-    arrow.style.display = "none";
-  });
-
-  // Mostrar la flecha inicial
-  const initialArrow = document.getElementById("arrow-home");
-  if (initialArrow) {
-    initialArrow.style.display = "flex";
   }
 }
 
-// Animar elementos al hacer clic
-const animatedElements = document.querySelectorAll(".animated-element");
+// Evento de scroll en el contenedor
+snapContainer.addEventListener("scroll", updateArrows);
 
-animatedElements.forEach((element) => {
-  element.addEventListener("click", () => {
-    element.style.transform = "scale(1.5) rotate(0deg)";
-    setTimeout(() => {
-      element.style.transform = "scale(1)";
-    }, 200); // Duración del efecto
+// Inicializar las flechas en la carga de la página
+document.addEventListener("DOMContentLoaded", () => {
+  updateArrows();
+});
+
+// Scroll suave para flechas
+document.querySelectorAll(".arrow").forEach((arrow) => {
+  arrow.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Desplazarse a la sección indicada por el href
+    const targetSection = document.querySelector(this.getAttribute("href"));
+    if (targetSection) {
+      // Agregar un pequeño retraso para un desplazamiento más suave
+      setTimeout(() => {
+        targetSection.scrollIntoView({
+          behavior: "smooth", // Desplazamiento suave
+          block: "start",
+        });
+      }, 150); // Cambia este valor para ajustar el retraso si es necesario
+    }
   });
 });
 
@@ -98,47 +95,26 @@ homeButton.addEventListener("click", (e) => {
   }
 });
 
-document.addEventListener("keydown", (event) => {
-  // Detectar la tecla presionada (ArrowUp o ArrowDown)
-  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-    event.preventDefault();
-
-    // Obtener la sección actualmente visible en la ventana
-    const currentSection = document
-      .elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
-      .closest("section");
-
-    let targetSection;
-
-    if (event.key === "ArrowDown") {
-      // Mover hacia abajo
-      targetSection = currentSection.nextElementSibling;
-    } else if (event.key === "ArrowUp") {
-      // Mover hacia arriba
-      targetSection = currentSection.previousElementSibling;
-    }
-
-    // Si existe la sección objetivo, hacer scroll hacia ella
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }
-});
-
 function copyEmail() {
   const emailText = document.getElementById("email-text").innerText;
+  const button = document.getElementById("copy-email-btn");
+
   navigator.clipboard
     .writeText(emailText)
     .then(() => {
-      //alert("Email copied to clipboard!");
+      // Cambiar el texto del botón a "Copied ✅"
+      button.innerHTML = "Copied ✅";
+
+      // Restaurar el texto original después de 2 segundos
+      setTimeout(() => {
+        button.innerHTML = "Copy Email";
+      }, 2000);
     })
     .catch((err) => {
-      //console.error("Failed to copy text: ", err);
+      console.error("Failed to copy text: ", err);
     });
 }
+
 
 // Fondo de partículas con un cohete y fuego
 const particleVertex = `
@@ -176,7 +152,7 @@ class Canvas {
 
     window.addEventListener('resize', () => this.onResize());
   }
-  
+
   initCamera() {
     this.camera = new THREE.PerspectiveCamera(
       75,

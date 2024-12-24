@@ -83,10 +83,10 @@
           class="text-center mx-auto mb-5"
           style="max-width: 800px; color: #90ee90"
         >
-          I’m a Systems Engineering student currently in my 4th semester. I have
-          a strong interest in solving complex problems, designing intuitive
+          I’m a Systems Engineering student currently in my 3th year. I have a
+          strong interest in solving complex problems, designing intuitive
           interfaces, and building scalable, maintainable applications. Below
-          are some key areas where I excel.
+          are some key areas I have worked on.
         </p>
         <div class="row justify-content-center g-4">
           <div class="col-12 col-md-4">
@@ -108,8 +108,8 @@
                 class="text-center"
                 style="color: #90ee90; font-size: 1.2rem; padding-top: 15px"
               >
-                I focus on creating seamless user experiences through thoughtful
-                and modern designs.
+                I enjoy crafting intuitive and visually appealing interfaces,
+                ensuring a smooth and engaging experience for users.
               </p>
             </div>
           </div>
@@ -132,8 +132,8 @@
                 class="text-center"
                 style="color: #90ee90; font-size: 1.2rem; padding-top: 15px"
               >
-                I specialize in building scalable, resilient applications using
-                technologies like JavaScript, CSS, HTML, Java, and C++.
+                I enjoy giving structure and scalability to backend systems,
+                turning ideas into robust solutions.
               </p>
             </div>
           </div>
@@ -380,14 +380,6 @@
                 </div>
                 <div>
                   <i
-                    class="fab fa-react"
-                    style="font-size: 2rem; color: #61dafb"
-                    title="React"
-                  ></i>
-                  <p style="color: #90ee90; font-size: 0.9rem">React</p>
-                </div>
-                <div>
-                  <i
                     class="fab fa-java"
                     style="font-size: 2rem; color: #f89820"
                     title="Java"
@@ -395,20 +387,24 @@
                   <p style="color: #90ee90; font-size: 0.9rem">Java</p>
                 </div>
                 <div>
-                  <i
-                    class="fas fa-code"
-                    style="font-size: 2rem; color: #9a4993"
-                    title="C#"
-                  ></i>
-                  <p style="color: #90ee90; font-size: 0.9rem">C#</p>
+                  <img
+                    src="assets/icons/cplusplus.svg"
+                    alt="C++"
+                    id="logo-cpp"
+                    title="C++"
+                  />
+                  <p style="color: #90ee90; font-size: 0.9rem">C++</p>
                 </div>
+
                 <div>
-                  <i
-                    class="fas fa-code"
-                    style="font-size: 2rem; color: #a8b9cc"
-                    title="C"
-                  ></i>
-                  <p style="color: #90ee90; font-size: 0.9rem">C</p>
+                  <img
+                    src="assets/icons/haskell.svg"
+                    alt="Haskell"
+                    style="width: 40px; height: 40px"
+                    title="Haskell"
+                    id="logo-h"
+                  />
+                  <p style="color: #90ee90; font-size: 0.9rem">Haskell</p>
                 </div>
               </div>
             </div>
@@ -430,7 +426,6 @@
                 style="color: #90ee90; font-size: 1.2rem"
               >
                 <li>🤝 Teamwork</li>
-                <li>📈 Problem Solving</li>
                 <li>🗣️ Communication</li>
                 <li>⏰ Time Management</li>
                 <li>📚 Adaptability</li>
@@ -449,16 +444,20 @@
           <i class="bi bi-arrow-down"></i>
         </a>
       </section>
+
       <!-- Contact Section -->
       <section
         id="contact"
         class="contact container d-flex flex-column align-items-center py-5"
         style="color: #32cd32"
       >
-        <h2 class="text-center mb-4" style="color: #32cd32">Contact Me</h2>
+        <h2 id="title-contact" class="text-center mb-4" style="color: #32cd32">
+          Contact Me
+        </h2>
         <p
           class="text-center mx-auto mb-5"
           style="max-width: 800px; color: #90ee90"
+          id="description-contact"
         >
           Feel free to reach out to me through any of the following platforms!
         </p>
@@ -492,6 +491,7 @@
                 nicobidenti@gmail.com
               </p>
               <button
+                id="copy-email-btn"
                 class="btn btn-outline-success copy-btn"
                 onclick="copyEmail()"
                 style="color: #32cd32; border: 1px solid #32cd32"
