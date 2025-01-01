@@ -247,6 +247,26 @@ section {
   transform: scale(1.1); /* Efecto de agrandamiento */
 }
 
+/* Sección de Experiencia */
+.experience-section {
+  color: #90ee90; /* Texto verde claro */
+  text-align: center;
+  font-family: "Cabin", serif;
+}
+
+.experience-section h2 {
+  font-family: "Press Start 2P", cursive; /* Estilo retro */
+  color: #32cd32; /* Verde brillante */
+  margin-bottom: 30px;
+}
+
+.experience-intro {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 10px auto;
+  color: #90ee90;
+}
+
 /* Contact Section */
 
 #description-contact {
