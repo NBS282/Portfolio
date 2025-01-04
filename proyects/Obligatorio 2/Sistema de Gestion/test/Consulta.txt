@@ -1,0 +1,4 @@
+Puesto: Pol
+Postulantes:
+ea, (cedula), mail
+pedro, (cedula), mail

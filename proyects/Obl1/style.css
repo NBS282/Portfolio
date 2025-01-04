@@ -15,8 +15,8 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #00ff15, #f1faee); /* Rojo degradado */
-  color: #000000; /* Texto blanco */
+  background-color: #333;
+  color: #0f0;
   padding: 1rem 0;
   text-align: center;
   border-bottom: 4px solid #0f0;
@@ -96,14 +96,20 @@ button:hover {
 }
 
 #controls {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
-  margin-top: 2rem; /* Mayor separación con la matriz */
+  margin-top: 3rem; /* Mayor separación con la matriz */
 }
 
 /* Game Board */
+
+#game-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
 
 #game-board {
   display: grid;
@@ -117,6 +123,15 @@ button:hover {
   max-width: 100%; /* Ajusta el ancho máximo */
   max-height: 100%; /* Ajusta la altura máxima */
   overflow: hidden; /* Permitir scroll si es necesario */
+  grid-auto-rows: minmax(
+    50px,
+    1fr
+  ); /* Fija el tamaño mínimo y relativo de las filas */
+  grid-auto-columns: minmax(
+    50px,
+    1fr
+  ); /* Fija el tamaño mínimo y relativo de las columnas */
+  flex-shrink: 0; /* Evita que el tablero se reduzca */
 }
 
 #game-board .cell {
@@ -144,6 +159,13 @@ button:hover {
 }
 
 /* Panel lateral */
+
+#side-panel h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: rem;
+}
+
 #side-panel {
   width: 100%;
   max-width: 300px;
@@ -154,7 +176,7 @@ button:hover {
   font-family: "Press Start 2P", cursive;
   overflow-y: auto;
   max-height: 400px;
-  margin: 1rem auto;
+  margin: 4rem auto;
 }
 
 #side-panel h3 {
@@ -177,25 +199,28 @@ button:hover {
   margin: 0.5rem 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  #game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #side-panel {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  #game-board {
-    max-width: 100%;
-  }
+#win-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(250, 250, 250, 0.95); /* Blanco casi sólido */
+  color: #457b9d; /* Azul fuerte */
+  border: 2px solid #e63946; /* Rojo brillante */
+  padding: 2rem; /* Espaciado interno */
+  font-family: "Press Start 2P"; /* Fuente retro */
+  text-align: center; /* Texto centrado */
+  z-index: 1000; /* Asegura que esté encima de todo */
+  display: flex; /* Usar flexbox para centrar */
+  justify-content: center;
+  align-items: center;
+  width: auto; /* Ancho del mensaje */
+  height: auto; /* Alto del mensaje */
+  box-shadow: 0 0 15px #0f0; /* Sombra verde */
+  animation: fadeIn 0.5s ease-in-out; /* Animación de aparición */
 }
 
-#win-message {
+#error-message {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -267,14 +292,9 @@ button:hover {
   background-color: #f4a261; /* Naranja brillante */
   color: #1d3557; /* Azul oscuro */
   border: 2px solid #0f0;
-  padding: 0.75rem 1.5rem;
   font-family: "Press Start 2P", cursive;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
 }
 
 #help-btn:hover {
@@ -349,4 +369,28 @@ footer {
   background-color: #333;
   color: #0f0;
   border-top: 4px solid #0f0;
+}
+
+@media (max-width: 768px) {
+  #game {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #game-board {
+    width: 100%;
+    max-width: 300px; /* Ajusta el tamaño para pantallas pequeñas */
+  }
+
+  #side-panel {
+    max-width: 100%; /* Hacer que el panel ocupe el 95% del ancho de la pantalla */
+    max-height: 100vh; /* Limitar la altura al 80% de la ventana visible */
+    padding: 0rem; /* Mayor espacio interno */
+    margin: 0; /* Sin margen */
+
+  }
+
+  footer {
+    padding: 2rem; /* Más espacio en el footer */
+  }
 }

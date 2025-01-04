@@ -31,17 +31,19 @@
         <div id="error-message" class="hidden"></div>
       </section>
       <section id="game">
-        <h2>Tablero</h2>
         <div style="display: flex; gap: 2rem">
           <!-- Tablero -->
-          <div id="game-board"></div>
-
+          <div>
+            <h2 id="game-title">Tablero</h2>
+            <div id="game-board"></div>
+          </div>
           <!-- Panel de historial y solución -->
           <div id="side-panel">
-            <h3>Historial</h3>
+            <h3>Panel de Juego</h3>
+            <!-- Título adicional -->
+            <h4>Historial</h4>
             <ul id="history-list"></ul>
-
-            <h3>Solución</h3>
+            <h4>Solución</h4>
             <ul id="solution-list"></ul>
           </div>
         </div>
@@ -49,9 +51,8 @@
           <button id="history-btn">Mostrar Historial</button>
           <button id="solution-btn">Mostrar Solución</button>
           <button id="restart-btn">Reiniciar Juego</button>
+          <button id="help-btn">Ayuda</button>
         </div>
-
-        <button id="help-btn">Ayuda</button>
 
         <div id="help-popup" class="hidden">
           <div class="help-content">
@@ -100,7 +101,7 @@
     </main>
 
     <div id="win-message" class="hidden">
-      <p>¡Ganaste! 🎉</p>
+      <p>🎉 ¡Ganaste! 🎉</p>
     </div>
 
     <footer>
