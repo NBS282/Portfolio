@@ -3,15 +3,16 @@ body {
   font-family: "Press Start 2P", cursive;
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    135deg,
-    #1d3557,
-    #457b9d
-  ); /* Fondo azul degradado */
-  color: #f1faee; /* Texto claro */
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: #f1faee;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 header {
@@ -20,37 +21,49 @@ header {
   padding: 1rem 0;
   text-align: center;
   border-bottom: 4px solid #0f0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 main {
   flex: 1;
-  padding: 2rem;
+  padding: 6rem 2rem 2rem; /* Ajustamos el padding para header fijo */
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-section {
-  margin-bottom: 2rem;
   width: 100%;
-  max-width: 800px;
+  box-sizing: border-box;
+  justify-content: center;
   text-align: center;
+  gap: 2rem;
 }
 
 /* Configuración inicial */
 #config {
-  display: block;
-}
-
-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
   gap: 1rem;
-  justify-content: center;
 }
 
-form label {
-  flex: 1 1 100%;
+#config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#config-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 form input[type="number"] {
@@ -62,7 +75,7 @@ form input[type="number"] {
   border: 2px solid #0f0;
   padding: 0.5rem;
   font-family: "Press Start 2P", cursive;
-  width: 70px;
+  width: 100px;
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
@@ -73,16 +86,11 @@ form input[type="number"]:hover {
   transform: scale(1.1);
 }
 
-form button {
-  flex: 1 1 100%;
-  margin-top: 1rem;
-}
-
 /* Botones */
 button {
-  background-color: #457b9d; /* Azul brillante */
-  color: #ffffff; /* Texto blanco */
-  border: 2px solid #f4a261; /* Naranja vibrante */
+  background-color: #2db2ff;
+  color: #ffffff;
+  border: 2px solid #f4a261;
   padding: 0.75rem 1.5rem;
   font-family: "Press Start 2P", cursive;
   cursor: pointer;
@@ -95,54 +103,80 @@ button:hover {
   transform: scale(1.1);
 }
 
+#start-btn {
+  background-color: #f4a261;
+  color: #1d3557;
+  border: 2px solid #0f0;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
 #controls {
-  display: grid;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
   justify-content: center;
-  margin-top: 3rem; /* Mayor separación con la matriz */
+  margin-top: 0.5rem; /* Espacio entre el tablero y los botones */
+  margin-bottom: 0.5rem; /* Espacio adicional antes del footer */
 }
 
-/* Game Board */
-
-#game-title {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+#game-controls {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 100px;
 }
 
+/* Game Layout */
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #222;
+  border: 2px solid #0f0;
+  box-shadow: 0 0 20px #0f0;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Tablero del Juego */
 #game-board {
   display: grid;
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 6px;
   background-color: #111;
   border: 4px solid #0f0;
   box-shadow: 0 0 20px #0f0, 0 0 40px #0f0 inset;
-  height: auto;
-  width: auto;
-  max-width: 100%; /* Ajusta el ancho máximo */
-  max-height: 100%; /* Ajusta la altura máxima */
-  overflow: hidden; /* Permitir scroll si es necesario */
-  grid-auto-rows: minmax(
-    50px,
-    1fr
-  ); /* Fija el tamaño mínimo y relativo de las filas */
-  grid-auto-columns: minmax(
-    50px,
-    1fr
-  ); /* Fija el tamaño mínimo y relativo de las columnas */
-  flex-shrink: 0; /* Evita que el tablero se reduzca */
+  padding: 1rem;
+  width: fit-content;
+  margin: 0 auto;
 }
 
-#game-board .cell {
+.cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem; /* Ajusta el tamaño del texto dentro de las celdas */
+  width: 60px;
+  height: 60px;
+  font-size: clamp(0.75rem, 2vw, 1rem);
   border: 1px solid #0f0;
   background-color: #222;
   color: #0f0;
-  transition: all 0.3s ease; /* Transición suave para cambios */
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  box-shadow: 0 0 15px #0f0;
+  filter: brightness(1.2);
 }
 
 #game-board .cell.red {
@@ -153,40 +187,27 @@ button:hover {
   background-color: #0000ff;
 }
 
-#game-board .cell:hover {
-  box-shadow: 0 0 15px #0f0;
-  filter: brightness(1.2);
-}
-
-/* Panel lateral */
-
-#side-panel h3 {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: rem;
-}
-
+/* Panel Lateral */
 #side-panel {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   background-color: #222;
   color: #0f0;
   border: 2px solid #0f0;
   padding: 1rem;
   font-family: "Press Start 2P", cursive;
+  box-shadow: 0 0 20px #0f0;
   overflow-y: auto;
-  max-height: 400px;
-  margin: 4rem auto;
 }
 
 #side-panel h3 {
-  font-size: 1rem;
-  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid #0f0;
   padding-bottom: 0.5rem;
 }
 
-/* Listas sin puntos */
+/* Listas */
 #history-list,
 #solution-list {
   list-style: none;
@@ -199,46 +220,24 @@ button:hover {
   margin: 0.5rem 0;
 }
 
-#win-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(250, 250, 250, 0.95); /* Blanco casi sólido */
-  color: #457b9d; /* Azul fuerte */
-  border: 2px solid #e63946; /* Rojo brillante */
-  padding: 2rem; /* Espaciado interno */
-  font-family: "Press Start 2P"; /* Fuente retro */
-  text-align: center; /* Texto centrado */
-  z-index: 1000; /* Asegura que esté encima de todo */
-  display: flex; /* Usar flexbox para centrar */
-  justify-content: center;
-  align-items: center;
-  width: auto; /* Ancho del mensaje */
-  height: auto; /* Alto del mensaje */
-  box-shadow: 0 0 15px #0f0; /* Sombra verde */
-  animation: fadeIn 0.5s ease-in-out; /* Animación de aparición */
-}
-
+/* Mensajes y Popups */
+#win-message,
 #error-message {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(250, 250, 250, 0.95); /* Blanco casi sólido */
-  color: #457b9d; /* Azul fuerte */
-  border: 2px solid #e63946; /* Rojo brillante */
-  padding: 2rem; /* Espaciado interno */
-  font-family: "Press Start 2P", cursive; /* Fuente retro */
-  text-align: center; /* Texto centrado */
-  z-index: 1000; /* Asegura que esté encima de todo */
-  display: flex; /* Usar flexbox para centrar */
-  justify-content: center;
-  align-items: center;
-  width: auto; /* Ancho del mensaje */
-  height: auto; /* Alto del mensaje */
-  box-shadow: 0 0 15px #0f0; /* Sombra verde */
-  animation: fadeIn 0.5s ease-in-out; /* Animación de aparición */
+  background-color: rgba(250, 250, 250, 0.95);
+  color: #457b9d;
+  border: 2px solid #e63946;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  font-family: "Press Start 2P";
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 0 15px #0f0;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -252,11 +251,7 @@ button:hover {
   }
 }
 
-.blur-background {
-  filter: blur(5px); /* Desenfoque del fondo */
-  transition: filter 0.5s ease; /* Transición suave del desenfoque */
-}
-
+/* Fuegos artificiales */
 .fireworks-container {
   position: fixed;
   top: 0;
@@ -287,80 +282,25 @@ button:hover {
   }
 }
 
-/* Botón de ayuda */
-#help-btn {
-  background-color: #f4a261; /* Naranja brillante */
-  color: #1d3557; /* Azul oscuro */
-  border: 2px solid #0f0;
-  font-family: "Press Start 2P", cursive;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#help-btn:hover {
-  background-color: #0f0;
-  color: #000;
-  transform: scale(1.1);
-}
-
-/* Ventana emergente de ayuda */
+/* Ventana de Ayuda */
 #help-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Fondo blanco semitransparente */
-  color: #1d3557; /* Azul oscuro */
-  border: 2px solid #f4a261; /* Naranja */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #1d3557;
+  border: 2px solid #f4a261;
+  width: 90%;
+  max-width: 500px;
   padding: 2rem;
-  font-family: "Press Start 2P", cursive;
   z-index: 1100;
-  width: 80%;
-  max-width: 400px;
+  overflow-y: auto;
   box-shadow: 0 0 20px #0f0;
 }
 
 #help-popup.hidden {
   display: none;
-}
-
-.help-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.help-content p {
-  margin-bottom: 1rem;
-}
-
-.help-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.help-content ul li {
-  margin-bottom: 0.5rem;
-}
-
-#close-help-btn {
-  background-color: #222;
-  color: #0f0;
-  border: 2px solid #0f0;
-  padding: 0.5rem 1rem;
-  font-family: "Press Start 2P", cursive;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#close-help-btn:hover {
-  background-color: #0f0;
-  color: #000;
-  transform: scale(1.1);
 }
 
 footer {
@@ -369,28 +309,43 @@ footer {
   background-color: #333;
   color: #0f0;
   border-top: 4px solid #0f0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .cell {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @media (max-width: 768px) {
-  #game {
+  .game-container {
+    grid-template-columns: 1fr;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+  }
+
+  #controls {
     flex-direction: column;
-    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 0.75rem;
   }
 
-  #game-board {
-    width: 100%;
-    max-width: 300px; /* Ajusta el tamaño para pantallas pequeñas */
-  }
-
-  #side-panel {
-    max-width: 100%; /* Hacer que el panel ocupe el 95% del ancho de la pantalla */
-    max-height: 100vh; /* Limitar la altura al 80% de la ventana visible */
-    padding: 0rem; /* Mayor espacio interno */
-    margin: 0; /* Sin margen */
-
-  }
-
-  footer {
-    padding: 2rem; /* Más espacio en el footer */
+  #controls {
+    flex-direction: column;
   }
 }
