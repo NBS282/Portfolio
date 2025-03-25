@@ -155,6 +155,12 @@ function startGame() {
     document.getElementById("history-list").innerHTML = "";
     document.getElementById("solution-list").innerHTML = "";
 
+    // Resetear botones 
+    historyBtn.textContent = "Mostrar historial";
+    solutionBtn.textContent = "Mostrar solución";
+    isHistoryVisible = false;
+    isSolutionVisible = false;
+    
     // Reset game state
     gameState.history = [];
     gameState.solution = [];

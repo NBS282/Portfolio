@@ -120,9 +120,11 @@ section {
 }
 
 #projects .card {
-  min-height: 400px;
+  height: 400px;
+  width: 300px;
   background-color: #1c1c1c;
   border: 1px solid #32cd32;
+  align-items: auto;
 }
 
 #projects .card img {
