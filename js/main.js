@@ -1,17 +1,3 @@
-/*
-// Desactivar scroll con la rueda del mouse
-window.addEventListener("wheel", (e) => {
-  e.preventDefault();
-}, { passive: false });
-
-// Desactivar scroll con las teclas (opcional)
-window.addEventListener("keydown", (e) => {
-  const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
-  if (keys.includes(e.key)) {
-    e.preventDefault();
-  }
-}); 
-*/
 // Detectar las secciones y flechas
 const sections = document.querySelectorAll("section");
 const snapContainer = document.querySelector(".snap-container");
@@ -246,7 +232,7 @@ class Canvas {
       this.scene.add(ship);
     };
 
-    // Crear un ovni más realista
+    // Crear un ovni 
     const ufoBaseGeometry = new THREE.CylinderGeometry(2, 4, 0.5, 32);
     const ufoBaseMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const ufoBase = new THREE.Mesh(ufoBaseGeometry, ufoBaseMaterial);
@@ -314,7 +300,7 @@ class Canvas {
           ship.mesh.rotation.z += 0.02; // Rotación
         }
 
-        // Comportamiento específico para nave nodriza
+        // Comportamiento específico para nave 
         if (ship.type === 'mothership') {
           ship.mesh.position.x += Math.sin(ship.mesh.position.y * 0.05) * 0.5; // Movimiento ondulatorio
         }
